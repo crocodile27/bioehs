@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import GeneralRequirements from "./GeneralRequirements.tsx";
 import Concentrations from "./Concentrations.tsx";
+import Arrow from "./Arrow.tsx";
 
 export const CourseMap = () => {
   const listOfRelatedRequirements: any[] = [
@@ -14,6 +15,93 @@ export const CourseMap = () => {
     ["math53", "math54", "math55", "cell", "devices", "imaging", "synthetic"],
     ["eecs16a", "eecs16b", "imaging", "devices"],
   ];
+  const gen_req_coordinates: {
+    course: string;
+    x_coordinate: string;
+    y_coordinate: string;
+  }[] = [
+    { course: "mse45", y_coordinate: "25", x_coordinate: "0" },
+    { course: "mechec85", y_coordinate: "25", x_coordinate: "10" },
+    { course: "e7", y_coordinate: "25", x_coordinate: "60" },
+    { course: "chem3a", y_coordinate: "25", x_coordinate: "30" },
+    { course: "cs70", y_coordinate: "32", x_coordinate: "40" },
+    { course: "bioe10", y_coordinate: "17", x_coordinate: "20" },
+    { course: "bioe25", y_coordinate: "32", x_coordinate: "20" },
+    { course: "bioe26", y_coordinate: "47", x_coordinate: "20" },
+    { course: "bioe11", y_coordinate: "40", x_coordinate: "30" },
+    { course: "cs61a", y_coordinate: "25", x_coordinate: "50" },
+    { course: "cs61b", y_coordinate: "40", x_coordinate: "50" },
+    { course: "physics7a", y_coordinate: "25", x_coordinate: "70" },
+    { course: "physics7b", y_coordinate: "40", x_coordinate: "70" },
+    { course: "math55", y_coordinate: "32", x_coordinate: "90" },
+    { course: "math54", y_coordinate: "25", x_coordinate: "80" },
+    { course: "math53", y_coordinate: "40", x_coordinate: "80" },
+    { course: "eecs16a", y_coordinate: "25", x_coordinate: "100" },
+    { course: "eecs16b", y_coordinate: "40", x_coordinate: "100" },
+  ];
+
+  const relationships: {
+    gen_req: any[];
+    concentrations: any[];
+    color: string;
+    hiearchy_number: number;
+  }[] = [
+    {
+      gen_req: ["mse45"],
+      concentrations: ["devices", "cell"],
+      color: "brown",
+      hiearchy_number: 0,
+    },
+    {
+      gen_req: ["mechec85"],
+      concentrations: ["synthetic", "devices"],
+      color: "burlywood",
+      hiearchy_number: 1,
+    },
+    {
+      gen_req: ["bioe10", "bioe25", "bioe26"],
+      concentrations: ["cell", "devices", "imaging", "synthetic"],
+      color: "#00cccc",
+      hiearchy_number: 2,
+    },
+    {
+      gen_req: ["bioe11", "chem3a"],
+      concentrations: ["cell", "devices", "imaging", "synthetic"],
+      color: "#00cccc",
+      hiearchy_number: 3,
+    },
+    {
+      gen_req: ["e7", "cs61a", "cs61b"],
+      concentrations: ["devices", "synthetic"],
+      color: "#00bfff",
+      hiearchy_number: 4,
+    },
+    {
+      gen_req: ["cs70"],
+      concentrations: ["synthetic"],
+      color: "#00bfff",
+      hiearchy_number: 5,
+    },
+    {
+      gen_req: ["physics7a", "physics7b"],
+      concentrations: ["cell", "devices", "imaging", "synthetic"],
+      color: "#ff9933",
+      hiearchy_number: 6,
+    },
+    {
+      gen_req: ["math53", "math54", "math55"],
+      concentrations: ["cell", "devices", "imaging", "synthetic"],
+      color: "#ff6666",
+      hiearchy_number: 7,
+    },
+    {
+      gen_req: ["eecs16a", "eecs16b"],
+      concentrations: ["imaging", "devices"],
+      color: "#cccccc",
+      hiearchy_number: 8,
+    },
+  ];
+
   const ListOfCourseInfo: { courseid: string; courseName: string }[] = [
     { courseid: "mse45", courseName: "MSE 45" },
     { courseid: "mechec85", courseName: "MECHE C85" },
@@ -54,9 +142,43 @@ export const CourseMap = () => {
     setNonOpaqueList([]);
   }
 
+  function getXYCoordinate(courseId: string) {
+    for (let i = 0; i < gen_req_coordinates.length; i++) {
+      if (courseId === gen_req_coordinates[i].course) {
+        return [
+          gen_req_coordinates[i].x_coordinate,
+          gen_req_coordinates[i].y_coordinate,
+        ];
+      }
+    }
+    return ["0", "0"]; // Return null if the courseId is not found
+  }
+
   return (
     <div className="main-container">
       <div className="container">
+        {relationships.map((relationship) =>
+          relationship.gen_req.map((i) =>
+            relationship.concentrations.map((subject) => (
+              <Arrow
+                key={i}
+                className={
+                  isHoveredOver
+                    ? NonOpaqueList.includes(relationship.gen_req[0])
+                      ? "arrow"
+                      : "arrow opaque-arrow"
+                    : "arrow"
+                }
+                hiearchy_number={relationship.hiearchy_number}
+                color={relationship.color}
+                start_x={getXYCoordinate(i)[0]}
+                start_y={getXYCoordinate(i)[1]}
+                subject={subject}
+              />
+            ))
+          )
+        )}
+
         {ListOfCourseInfo.map((courseInfo) => (
           <GeneralRequirements
             key={courseInfo.courseid}
