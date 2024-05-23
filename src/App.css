@@ -1,0 +1,116 @@
+/* styles.css */
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: white;
+}
+
+.container {
+  position: relative;
+  width: 80%;
+  height: 80%;
+  margin-right:5%;
+}
+
+.container2 {
+  position: relative;
+  width: 80%;
+  height: 80%;
+  margin-right: 5%;
+  padding: 20px; /* Add padding to the container */
+  box-sizing: border-box; /* Include padding in the element's total width and height */
+}
+
+.circle {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: normal;
+  text-align: center;
+  padding: 5px; /* Add padding to ensure text doesn't touch the edges */
+  box-sizing: border-box; /* Include padding in the element's total width and height */
+  font-size: 12px; /* Adjust the font size to fit the text inside the circles */
+  transform: translate(-50%, -50%);
+}
+
+.opaque{
+  opacity: 10%;
+  -webkit-transition: all 500ms ease;
+  -moz-transition: all 500ms ease;
+  -ms-transition: all 500ms ease;
+  -o-transition: all 500ms ease;
+  transition: all 500ms ease;
+}
+
+.concentrations {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: normal;
+  text-align: center;
+  padding: 5px; /* Add padding to ensure text doesn't touch the edges */
+  box-sizing: border-box; /* Include padding in the element's total width and height */
+  font-size: 12px; /* Adjust the font size to fit the text inside the circles */
+  transform: translate(-50%, -50%);
+}
+
+#mse45 { background-color: brown; top: 25%; left: 5%; ;}
+#mechec85 { background-color: burlywood; top: 25%; left: 15%; ;}
+#e7 { background-color: #00bfff; top: 25%; left: 65%; ;}
+#chem3a { background-color: #00cccc; top: 25%; left: 35%; ;}
+#cs70 { background-color: #00bfff; top: 25%; left: 45%; ;}
+#bioe10 { background-color: #00cccc; top: 40%; left: 25%; ;}
+#bioe11 { background-color: #00cccc; top: 40%; left: 35%; ;}
+#cs61a { background-color: #00bfff; top: 25%; left: 55%; ;}
+#cs61b { background-color: #00bfff; top: 40%; left: 55%; ;}
+#physics7a { background-color: #ff9933; top: 25%; left: 75%; ;}
+#physics7b { background-color: #ff9933; top: 40%; left: 75%; ;}
+#math55 { background-color: #ff6666; top: 10%; left: 85%; ;}
+#math54 { background-color: #ff6666; top: 25%; left: 85%; ;}
+#math53 { background-color: #ff6666; top: 40%; left: 85%; ;}
+#eecs16a { background-color: #cccccc; top: 40%; left: 95%; ;}
+#eecs16b { background-color: #cccccc; top: 55%; left: 95%; ;} 
+
+/* Sub-container for the last four circles */
+.sub-container {
+  position: absolute;
+  top: 75%;
+  left: 10%;
+  width: 80%;
+  height: 15%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#synthetic { background-color: #ff9999; position: relative; }
+#cell { background-color: #ccffcc; position: relative; }
+#devices { background-color: #cc99ff; position: relative; }
+#imaging { background-color: #ffff99; position: relative; }
+
+#arrows {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Ensure arrows do not interfere with interactions */
+}
+
+
