@@ -18,6 +18,7 @@ svg {
   position: absolute;
   stroke-width: 2;
   fill: none;
+  transition: all 700ms ease;
 }
 
 .container {
@@ -25,6 +26,17 @@ svg {
   top: 0%;
   left: 10%;
   width: 80%;
+  height: 60%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.container-arrows {
+  position: absolute;
+  top: 0%;
+  left: 10%;
+  width: 90%;
   height: 60%;
   display: flex;
   justify-content: space-around;
@@ -70,8 +82,16 @@ svg {
   box-sizing: border-box; /* Include padding in the element's total width and height */
   font-size: 11px; /* Adjust the font size to fit the text inside the circles */
   transform: translate(-50%, -50%);
+  transition: all 700ms ease;
+  border: 0px solid;
 }
 
+.highlight-border{
+  border-color: black !important; 
+  border-width: 1px !important;
+  border-radius:2px;
+  transition: all 300ms ease;
+}
 .opaque{
   opacity: 20%;
   transition: all 700ms ease;
@@ -83,7 +103,7 @@ svg {
 }
 
 .concentration {
-  position: absolute;
+  position: relative;
   width: 90px;
   height: 90px;
   border-radius: 50%;
@@ -98,9 +118,12 @@ svg {
   box-sizing: border-box; /* Include padding in the element's total width and height */
   font-size: 11px; /* Adjust the font size to fit the text inside the circles */
   transform: translate(-50%, -50%);
+  border-width: 0cap;
+  border-style: solid;
+  transition: all 700ms ease;
 }
 
-#mse45 { background-color: brown; top: 25%; left: 0%; ;}
+#mse45 { background-color: brown; top: 25%; left: 0%;}
 #mechec85 { background-color: burlywood; top: 25%; left: 10%; ;}
 #e7 { background-color: #00bfff; top: 25%; left: 60%; ;}
 #chem3a { background-color: #00cccc; top: 25%; left: 30%; ;}
@@ -120,10 +143,10 @@ svg {
 #eecs16b { background-color: #cccccc; top: 40%; left: 100%; ;} 
 
 
-#synthetic { background-color: #ff9999; position: relative; }
-#cell { background-color: #ccffcc; position: relative; }
-#devices { background-color: #cc99ff; position: relative; }
-#imaging { background-color: #ffff99; position: relative; }
+#synthetic { background-color: #ff9999; }
+#cell { background-color: #ccffcc; }
+#devices { background-color: #cc99ff; }
+#imaging { background-color: #ffff99; }
 
 
 

@@ -4,6 +4,12 @@ import Concentrations from "./Concentrations.tsx";
 import Arrow from "./Arrow.tsx";
 
 export const CourseMap = () => {
+  const listOfConcentrations: string[] = [
+    "synthetic",
+    "cell",
+    "devices",
+    "imaging",
+  ];
   const listOfRelatedRequirements: any[] = [
     ["mse45", "devices", "cell"],
     ["mechec85", "synthetic", "devices"],
@@ -20,24 +26,24 @@ export const CourseMap = () => {
     x_coordinate: string;
     y_coordinate: string;
   }[] = [
-    { course: "mse45", y_coordinate: "25", x_coordinate: "0" },
-    { course: "mechec85", y_coordinate: "25", x_coordinate: "10" },
-    { course: "e7", y_coordinate: "25", x_coordinate: "60" },
-    { course: "chem3a", y_coordinate: "25", x_coordinate: "30" },
-    { course: "cs70", y_coordinate: "32", x_coordinate: "40" },
-    { course: "bioe10", y_coordinate: "17", x_coordinate: "20" },
-    { course: "bioe25", y_coordinate: "32", x_coordinate: "20" },
-    { course: "bioe26", y_coordinate: "47", x_coordinate: "20" },
-    { course: "bioe11", y_coordinate: "40", x_coordinate: "30" },
-    { course: "cs61a", y_coordinate: "25", x_coordinate: "50" },
-    { course: "cs61b", y_coordinate: "40", x_coordinate: "50" },
-    { course: "physics7a", y_coordinate: "25", x_coordinate: "70" },
-    { course: "physics7b", y_coordinate: "40", x_coordinate: "70" },
-    { course: "math55", y_coordinate: "32", x_coordinate: "90" },
-    { course: "math54", y_coordinate: "25", x_coordinate: "80" },
-    { course: "math53", y_coordinate: "40", x_coordinate: "80" },
-    { course: "eecs16a", y_coordinate: "25", x_coordinate: "100" },
-    { course: "eecs16b", y_coordinate: "40", x_coordinate: "100" },
+    { course: "mse45", y_coordinate: "25", x_coordinate: "2.5" },
+    { course: "mechec85", y_coordinate: "25", x_coordinate: "11.5" },
+    { course: "e7", y_coordinate: "25", x_coordinate: "56" },
+    { course: "chem3a", y_coordinate: "25", x_coordinate: "29.1" },
+    { course: "cs70", y_coordinate: "32", x_coordinate: "38" },
+    { course: "bioe10", y_coordinate: "17", x_coordinate: "20.5" },
+    { course: "bioe25", y_coordinate: "32", x_coordinate: "20.5" },
+    { course: "bioe26", y_coordinate: "47", x_coordinate: "20.5" },
+    { course: "bioe11", y_coordinate: "40", x_coordinate: "29.1" },
+    { course: "cs61a", y_coordinate: "25", x_coordinate: "47" },
+    { course: "cs61b", y_coordinate: "40", x_coordinate: "47" },
+    { course: "physics7a", y_coordinate: "25", x_coordinate: "64.9" },
+    { course: "physics7b", y_coordinate: "40", x_coordinate: "64.9" },
+    { course: "math55", y_coordinate: "32", x_coordinate: "82.7" },
+    { course: "math54", y_coordinate: "25", x_coordinate: "73.5" },
+    { course: "math53", y_coordinate: "40", x_coordinate: "73.5" },
+    { course: "eecs16a", y_coordinate: "25", x_coordinate: "91.6" },
+    { course: "eecs16b", y_coordinate: "40", x_coordinate: "91.6" },
   ];
 
   const relationships: {
@@ -125,6 +131,7 @@ export const CourseMap = () => {
 
   const [NonOpaqueList, setNonOpaqueList] = useState<string[]>([]);
   const [isHoveredOver, setHoveredOver] = useState(false);
+  const [OpaqueList, setOpaqueList] = useState<string[]>([]);
 
   const onMouseOver = (courseId: string) => {
     setHoveredOver(true);
@@ -134,7 +141,16 @@ export const CourseMap = () => {
         totalList = totalList.concat(listOfRelatedRequirements[i]);
       }
     }
+    totalList = [...new Set(totalList)];
     setNonOpaqueList(totalList);
+    if (listOfConcentrations.includes(courseId)) {
+      const opaqueList = listOfConcentrations.filter(
+        (concentration) => concentration !== courseId
+      );
+      setOpaqueList(opaqueList);
+    } else {
+      setOpaqueList([]);
+    }
   };
 
   function onMouseOut(courseId: string) {
@@ -156,12 +172,12 @@ export const CourseMap = () => {
 
   return (
     <div className="main-container">
-      <div className="container">
+      <div className="container-arrows">
         {relationships.map((relationship) =>
           relationship.gen_req.map((i) =>
             relationship.concentrations.map((subject) => (
               <Arrow
-                key={i}
+                key={i + subject}
                 className={
                   isHoveredOver
                     ? NonOpaqueList.includes(relationship.gen_req[0])
@@ -178,14 +194,15 @@ export const CourseMap = () => {
             ))
           )
         )}
-
+      </div>
+      <div className="container">
         {ListOfCourseInfo.map((courseInfo) => (
           <GeneralRequirements
             key={courseInfo.courseid}
             className={
               isHoveredOver
                 ? NonOpaqueList.includes(courseInfo.courseid)
-                  ? "circle"
+                  ? "circle highlight-border"
                   : "circle opaque"
                 : "circle"
             }
@@ -200,9 +217,9 @@ export const CourseMap = () => {
         <Concentrations
           className={
             isHoveredOver
-              ? NonOpaqueList.includes("synthetic")
-                ? "concentration"
-                : "concentration opaque"
+              ? OpaqueList.includes("synthetic")
+                ? "concentration opaque"
+                : "concentration highlight-border"
               : "concentration"
           }
           concentrationName={"Synthetic and Computational Biology"}
@@ -213,9 +230,9 @@ export const CourseMap = () => {
         <Concentrations
           className={
             isHoveredOver
-              ? NonOpaqueList.includes("cell")
-                ? "concentration"
-                : "concentration opaque"
+              ? OpaqueList.includes("cell")
+                ? "concentration opaque"
+                : "concentration highlight-border"
               : "concentration"
           }
           concentrationName={"Cell & Tissue Engineering"}
@@ -226,9 +243,9 @@ export const CourseMap = () => {
         <Concentrations
           className={
             isHoveredOver
-              ? NonOpaqueList.includes("devices")
-                ? "concentration"
-                : "concentration opaque"
+              ? OpaqueList.includes("devices")
+                ? "concentration opaque"
+                : "concentration highlight-border"
               : "concentration"
           }
           concentrationName={"Devices"}
@@ -239,9 +256,9 @@ export const CourseMap = () => {
         <Concentrations
           className={
             isHoveredOver
-              ? NonOpaqueList.includes("imaging")
-                ? "concentration"
-                : "concentration opaque"
+              ? OpaqueList.includes("imaging")
+                ? "concentration opaque"
+                : "concentration highlight-border"
               : "concentration"
           }
           concentrationName={"Imaging"}
@@ -254,5 +271,3 @@ export const CourseMap = () => {
     </div>
   );
 };
-
-export default CourseMap;

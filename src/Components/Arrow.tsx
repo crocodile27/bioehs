@@ -18,14 +18,14 @@ const Arrow = ({
   color,
 }: Props) => {
   const concentration_positions: any[] = [
-    ["synthetic", ["14%", "66%"]],
-    ["cell", ["39%", "66%"]],
-    ["devices", ["64%", "66%"]],
-    ["imaging", ["89%", "66%"]],
+    ["synthetic", ["12.6%", "66%"]],
+    ["cell", ["35%", "66%"]],
+    ["devices", ["57%", "66%"]],
+    ["imaging", ["79.4%", "66%"]],
   ];
   let sideLine: string;
   let bottomLine: string;
-  sideLine = (start_x / 1 + 5).toString().concat("%");
+  sideLine = (start_x / 1 + 2.5).toString().concat("%");
   bottomLine = (62 - hiearchy_number).toString().concat("%");
   start_x = start_x + "%";
   start_y = start_y + "%";
