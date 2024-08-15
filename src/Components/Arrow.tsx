@@ -26,7 +26,7 @@ const Arrow = ({
   let sideLine: string;
   let bottomLine: string;
   sideLine = (start_x / 1 + 2.5).toString().concat("%");
-  bottomLine = (62 - hiearchy_number).toString().concat("%");
+  bottomLine = hiearchy_number.toString().concat("%");
   start_x = start_x + "%";
   start_y = start_y + "%";
 
