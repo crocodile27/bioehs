@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import GeneralRequirements from "./GeneralRequirements.tsx";
 import Concentrations from "./Concentrations.tsx";
 import Arrow from "./Arrow.tsx";
+import StraightArrow from "./StraightArrow.tsx";
 
 export const CourseMap = () => {
   const listOfConcentrations: string[] = [
@@ -10,6 +11,28 @@ export const CourseMap = () => {
     "devices",
     "imaging",
   ];
+
+  const listOfGenReq: string[] = [
+    "mse45",
+    "mechec85",
+    "e7",
+    "chem3a",
+    "cs70",
+    "bioe10",
+    "bioe25",
+    "bioe26",
+    "bioe11",
+    "cs61a",
+    "cs61b",
+    "physics7a",
+    "physics7b",
+    "math55",
+    "math54",
+    "math53",
+    "eecs16a",
+    "eecs16b"
+  ]
+
   const listOfRelatedRequirements: any[] = [
     ["mse45", "devices", "cell"],
     ["mechec85", "synthetic", "devices"],
@@ -39,7 +62,7 @@ export const CourseMap = () => {
     ["bioe147", "bioe103", "synthetic"],
     ["bioe148", "bioe103", "synthetic"],
     ["bioe150", "devices"],
-    ["bioe151", "devices", "bioe11"],
+    ["bioe151", "bioe104", "devices", "bioe11"],
     ["bioe163", "bioe163l", "bioe102", "devices"],
     ["bioe168l", "imaging"],
     ["bioe187", "devices", "synthetic"],
@@ -254,10 +277,14 @@ export const CourseMap = () => {
   const onMouseOver = (courseId: string) => {
     setHoveredOver(true);
     let totalList: string[] = [];
-    for (let i = 0; i < listOfRelatedRequirements.length; i++) {
-      if (listOfRelatedRequirements[i].includes(courseId)) {
-        totalList = totalList.concat(listOfRelatedRequirements[i]);
+    if(listOfGenReq.includes(courseId)){
+      for (let i = 0; i < listOfRelatedRequirements.length; i++) {
+        if (listOfRelatedRequirements[i].includes(courseId)) {
+          totalList = totalList.concat(listOfRelatedRequirements[i]);
+        }
       }
+    } else{
+      totalList = totalList.concat()
     }
     totalList = [...new Set(totalList)];
     if (listOfConcentrations.includes(courseId)) {
