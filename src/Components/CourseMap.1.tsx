@@ -30,8 +30,8 @@ export const CourseMap = () => {
     "math54",
     "math53",
     "eecs16a",
-    "eecs16b"
-  ]
+    "eecs16b",
+  ];
 
   const listOfRelatedRequirements: any[] = [
     ["mse45", "devices", "cell"],
@@ -189,29 +189,6 @@ export const CourseMap = () => {
       color: "#cccccc",
       hiearchy_number: 62 - 8,
     },
-    // {
-    //   gen_req: [
-    //     "bioec131",
-    //     "bioe140l",
-    //     "bioe103",
-    //     "bioe104",
-    //     "bioe111",
-    //     "bioe110",
-    //     "bioe114",
-    //   ],
-    //   concentrations: ["synthetic"],
-    //   color: "#00bfff",
-    //   hiearchy_number: 85,
-    // },
-    /* task: something is wrong with 110, 114, think it's something to do with the containers being too much to the left or something...
-    
-    */
-    // {
-    //   gen_req: ["bioe134", "bioe147", "bioe148", "bioec112", "bioe115"],
-    //   concentrations: ["synthetic"],
-    //   color: "#00bfff",
-    //   hiearchy_number: 120,
-    // },
   ];
 
   const ListOfCourseInfo: { courseid: string; courseName: string }[] = [
@@ -277,14 +254,14 @@ export const CourseMap = () => {
   const onMouseOver = (courseId: string) => {
     setHoveredOver(true);
     let totalList: string[] = [];
-    if(listOfGenReq.includes(courseId)){
+    if (listOfGenReq.includes(courseId)) {
       for (let i = 0; i < listOfRelatedRequirements.length; i++) {
         if (listOfRelatedRequirements[i].includes(courseId)) {
           totalList = totalList.concat(listOfRelatedRequirements[i]);
         }
       }
-    } else{
-      totalList = totalList.concat()
+    } else {
+      totalList = totalList.concat();
     }
     totalList = [...new Set(totalList)];
     if (listOfConcentrations.includes(courseId)) {
