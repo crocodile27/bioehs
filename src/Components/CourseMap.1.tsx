@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import GeneralRequirements from "./GeneralRequirements.tsx";
 import Concentrations from "./Concentrations.tsx";
 import Arrow from "./Arrow.tsx";
+import StraightArrow from "./StraightArrow.tsx";
 
 export const CourseMap = () => {
   const listOfConcentrations: string[] = [
@@ -10,6 +11,28 @@ export const CourseMap = () => {
     "devices",
     "imaging",
   ];
+
+  const listOfGenReq: string[] = [
+    "mse45",
+    "mechec85",
+    "e7",
+    "chem3a",
+    "cs70",
+    "bioe10",
+    "bioe25",
+    "bioe26",
+    "bioe11",
+    "cs61a",
+    "cs61b",
+    "physics7a",
+    "physics7b",
+    "math55",
+    "math54",
+    "math53",
+    "eecs16a",
+    "eecs16b",
+  ];
+
   const listOfRelatedRequirements: any[] = [
     ["mse45", "devices", "cell"],
     ["mechec85", "synthetic", "devices"],
@@ -39,7 +62,7 @@ export const CourseMap = () => {
     ["bioe147", "bioe103", "synthetic"],
     ["bioe148", "bioe103", "synthetic"],
     ["bioe150", "devices"],
-    ["bioe151", "devices", "bioe11"],
+    ["bioe151", "bioe104", "devices", "bioe11"],
     ["bioe163", "bioe163l", "bioe102", "devices"],
     ["bioe168l", "imaging"],
     ["bioe187", "devices", "synthetic"],
@@ -166,29 +189,321 @@ export const CourseMap = () => {
       color: "#cccccc",
       hiearchy_number: 62 - 8,
     },
-    // {
-    //   gen_req: [
-    //     "bioec131",
-    //     "bioe140l",
-    //     "bioe103",
-    //     "bioe104",
-    //     "bioe111",
-    //     "bioe110",
-    //     "bioe114",
-    //   ],
-    //   concentrations: ["synthetic"],
-    //   color: "#00bfff",
-    //   hiearchy_number: 85,
-    // },
-    /* task: something is wrong with 110, 114, think it's something to do with the containers being too much to the left or something...
-    
-    */
-    // {
-    //   gen_req: ["bioe134", "bioe147", "bioe148", "bioec112", "bioe115"],
-    //   concentrations: ["synthetic"],
-    //   color: "#00bfff",
-    //   hiearchy_number: 120,
-    // },
+  ];
+
+  const upperDivRelationships: {
+    courseid: string;
+    prereqsAndConcentrations: any[];
+    color: string;
+    hiearchy_number: number;
+  }[] = [
+    {
+      courseid: "bioe100",
+      prereqsAndConcentrations: ["imaging", "devices", "cell", "synthetic"],
+      color: "blue",
+      hiearchy_number: 1,
+    },
+    {
+      courseid: "bioe101",
+      prereqsAndConcentrations: [
+        "eecs16a",
+        "eecs16b",
+        "math53",
+        "physics7a",
+        "physics7b",
+        "imaging",
+        "devices",
+      ],
+      color: "blue",
+      hiearchy_number: 1,
+    },
+    //new course
+    {
+      courseid: "bioe102",
+      prereqsAndConcentrations: [
+        "math53",
+        "math54",
+        "physic7a",
+        "cell",
+        "devices",
+      ],
+      color: "blue",
+      hiearchy_number: 1,
+    },
+    //bio1a or bioe11
+    {
+      courseid: "bioe103",
+      prereqsAndConcentrations: [
+        "physics7a",
+        "physics7b",
+        "math51",
+        "math52",
+        "math53",
+        "math54",
+        "bio1a",
+        "bioe11",
+        "synthetic",
+        "cell",
+      ],
+      color: "blue",
+      hiearchy_number: 1,
+    },
+    {
+      courseid: "bioe104",
+      prereqsAndConcentrations: [
+        "math53",
+        "math54",
+        "physics7a",
+        "synthetic",
+        "cell",
+      ],
+      color: "blue",
+      hiearchy_number: 1,
+    },
+    {
+      courseid: "bioe105",
+      prereqsAndConcentrations: ["math53", "physics7a", "physics7b", "devices"],
+      color: "blue",
+      hiearchy_number: 1,
+    },
+    //new course: math 54 or 16a/16b
+    {
+      courseid: "bioec106a",
+      prereqsAndConcentrations: [
+        "math54",
+        "eecs16a",
+        "eecs16b",
+        "cs61a",
+        "cs61b",
+        "devices",
+      ],
+      color: "blue",
+      hiearchy_number: 1,
+    },
+    //new course:
+    {
+      courseid: "bioec106b",
+      prereqsAndConcentrations: [
+        "eecsc106a",
+        "bioec106a",
+        "mecec106a",
+        "eecsc206a",
+        "devices",
+      ],
+      color: "blue",
+      hiearchy_number: 1,
+    },
+    {
+      courseid: "bioe110",
+      prereqsAndConcentrations: [
+        "bioe10",
+        "bioe11",
+        "bio1a",
+        "math54",
+        "cell",
+        "devices",
+      ],
+      color: "blue",
+      hiearchy_number: 1,
+    },
+    {
+      courseid: "bioe111",
+      prereqsAndConcentrations: [
+        "chem1a",
+        "chem4a",
+        "bioe11",
+        "bio1a",
+        "bioe103",
+        "devices",
+        "cell",
+        "synthetic",
+      ],
+      color: "blue",
+      hiearchy_number: 1,
+    },
+    //new course: "bioe102", "mecec85", "civec30"
+    {
+      courseid: "bioec112",
+      prereqsAndConcentrations: [
+        "bioe102",
+        "mecec85",
+        "civec30",
+        "devices",
+        "cell",
+        "synthetic",
+      ],
+      color: "blue",
+      hiearchy_number: 1,
+    },
+    //new course bioe11 or bio1a
+    {
+      courseid: "bioe114",
+      prereqsAndConcentrations: ["bio1a", "bioe11"],
+      color: "blue",
+      hiearchy_number: 1,
+    },
+    //bioe114 or bioe 202
+    {
+      courseid: "bioe115",
+      prereqsAndConcentrations: [
+        "bioe114",
+        "bioe11",
+        "bioe202",
+        "synthetic",
+        "cell",
+      ],
+      color: "blue",
+      hiearchy_number: 1,
+    },
+    //new course: MEC ENG 108, BIO ENG 102, MAT SCI 113 or equivalent
+    {
+      courseid: "bioe117",
+      prereqsAndConcentrations: ["mece108", "bioe102", "matsci113", "devices"],
+      color: "blue",
+      hiearchy_number: 1,
+    },
+    {
+      courseid: "bioe118",
+      prereqsAndConcentrations: [
+        "matsci45",
+        "bioe103",
+        "bioe102",
+        "bioe104",
+        "devices",
+        "cell",
+        "synthetic",
+      ],
+      color: "blue",
+      hiearchy_number: 1,
+    },
+    //new course: mecec85 or civec30 or bioe102
+    {
+      courseid: "bioec119",
+      prereqsAndConcentrations: ["mecec85", "civec30", "bioe102"],
+      color: "blue",
+      hiearchy_number: 1,
+    },
+    {
+      courseid: "bioe121",
+      prereqsAndConcentrations: [
+        "chem3a",
+        "physics7a",
+        "physics7b",
+        "bioe104",
+        "devices",
+      ],
+      color: "blue",
+      hiearchy_number: 1,
+    },
+    {
+      courseid: "bioe121L",
+      prereqsAndConcentrations: ["bioe104", "bioe121", "devices"],
+      color: "blue",
+      hiearchy_number: 1,
+    },
+    {
+      courseid: "bioe124",
+      prereqsAndConcentrations: ["bioe11", "chem3b", "bioe103", "bioe104"],
+      color: "blue",
+      hiearchy_number: 1,
+    },
+    {
+      courseid: "bioe125",
+      prereqsAndConcentrations: ["Eleng120", "devices"],
+      color: "blue",
+      hiearchy_number: 1,
+    },
+    {
+      courseid: "bioe125b",
+      prereqsAndConcentrations: ["eecsc106a", "bioec125"],
+      color: "blue",
+      hiearchy_number: 1,
+    },
+    //bioe11 or bio1a
+    {
+      courseid: "bioe131",
+      prereqsAndConcentrations: [
+        "bioe11",
+        "bio1a",
+        "cs61a",
+        "engin7",
+        "synthetic",
+      ],
+      color: "blue",
+      hiearchy_number: 1,
+    },
+    {
+      courseid: "bioe145",
+      prereqsAndConcentrations: ["devices"],
+      color: "blue",
+      hiearchy_number: 1,
+    },
+    {
+      courseid: "bioe147",
+      prereqsAndConcentrations: ["bioe103", "synthetic"],
+      color: "blue",
+      hiearchy_number: 1,
+    },
+    {
+      courseid: "bioe148",
+      prereqsAndConcentrations: ["bioe103", "synthetic"],
+      color: "blue",
+      hiearchy_number: 1,
+    },
+    {
+      courseid: "bioe150",
+      prereqsAndConcentrations: ["devices"],
+      color: "blue",
+      hiearchy_number: 1,
+    },
+    {
+      courseid: "bioe151",
+      prereqsAndConcentrations: ["bioe104", "devices", "bioe11"],
+      color: "blue",
+      hiearchy_number: 1,
+    },
+    {
+      courseid: "bioe163",
+      prereqsAndConcentrations: ["bioe163l", "bioe102", "devices"],
+      color: "blue",
+      hiearchy_number: 1,
+    },
+    {
+      courseid: "bioe168l",
+      prereqsAndConcentrations: ["imaging"],
+      color: "blue",
+      hiearchy_number: 1,
+    },
+    {
+      courseid: "bioe187",
+      prereqsAndConcentrations: ["devices", "synthetic"],
+      color: "blue",
+      hiearchy_number: 1,
+    },
+    {
+      courseid: "bioec112",
+      prereqsAndConcentrations: ["bioe102", "synthetic", "cell"],
+      color: "blue",
+      hiearchy_number: 1,
+    },
+    {
+      courseid: "bioec117",
+      prereqsAndConcentrations: ["bioe102", "devices", "cell"],
+      color: "blue",
+      hiearchy_number: 1,
+    },
+    {
+      courseid: "bioec118",
+      prereqsAndConcentrations: ["bioe103", "devices", "cell"],
+      color: "blue",
+      hiearchy_number: 1,
+    },
+    {
+      courseid: "bioec131",
+      prereqsAndConcentrations: ["bioe11", "synthetic"],
+      color: "blue",
+      hiearchy_number: 1,
+    },
   ];
 
   const ListOfCourseInfo: { courseid: string; courseName: string }[] = [
@@ -251,32 +566,36 @@ export const CourseMap = () => {
   // FUNCTIONS
   // on MouseOver set hovered over to be true and then set all related courses to be non-opaque
 
-  const onMouseOver = (courseId: string) => {
-    setHoveredOver(true);
-    let totalList: string[] = [];
-    for (let i = 0; i < listOfRelatedRequirements.length; i++) {
-      if (listOfRelatedRequirements[i].includes(courseId)) {
-        totalList = totalList.concat(listOfRelatedRequirements[i]);
-      }
-    }
-    totalList = [...new Set(totalList)];
-    if (listOfConcentrations.includes(courseId)) {
-      let opaqueList = listOfConcentrations.filter(
-        (concentration) => concentration !== courseId // filters out other courses and makes them opaque
-      );
-      let newTotalList = totalList.filter(
-        (course) => !opaqueList.includes(course)
-      );
-      //task need to remove opaque list from non opaque list
-      console.log(opaqueList);
-      console.log(newTotalList);
-      setOpaqueList(opaqueList); //set all other concentrations to be opaque
-      setNonOpaqueList(newTotalList);
-    } else {
-      setOpaqueList([]);
-      setNonOpaqueList(totalList);
-    }
-  };
+  // const onMouseOver = (courseId: string) => {
+  //   setHoveredOver(true);
+  //   let totalList: string[] = [];
+  //   if (listOfGenReq.includes(courseId)) {
+  //     for (let i = 0; i < listOfRelatedRequirements.length; i++) {
+  //       if (listOfRelatedRequirements[i].includes(courseId)) {
+  //         totalList = totalList.concat(listOfRelatedRequirements[i]);
+  //       }
+  //     }
+  //   } else {
+  //     totalList = totalList.concat();
+  //   }
+  //   totalList = [...new Set(totalList)];
+  //   if (listOfConcentrations.includes(courseId)) {
+  //     //If it is a concentration
+  //     let opaqueList = listOfConcentrations.filter(
+  //       // filters out other concentrations and makes them opaque
+  //       (concentration) => concentration !== courseId
+  //     );
+  //     let newTotalList = totalList.filter(
+  //       (course) => !opaqueList.includes(course)
+  //     );
+  //     //task need to remove opaque list from non opaque list
+  //     setOpaqueList(opaqueList); //set all other concentrations to be opaque
+  //     setNonOpaqueList(newTotalList);
+  //   } else {
+  //     setOpaqueList([]);
+  //     setNonOpaqueList(totalList);
+  //   }
+  // };
 
   // on MouseOut, set hovered over to be equal to false again and set non-opaque list to nothing
   function onMouseOut(courseId: string) {
