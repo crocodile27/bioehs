@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import GeneralRequirements from "./GeneralRequirements.tsx";
 import Concentrations from "./Concentrations.tsx";
 import Arrow from "./Arrow.tsx";
-import StraightArrow from "./StraightArrow.tsx";
 
 export const CourseMap = () => {
   const listOfConcentrations: string[] = [
@@ -33,6 +32,46 @@ export const CourseMap = () => {
     "eecs16b",
   ];
 
+  const listOfUpDiv: string[] = [
+    "bioe100",
+    "bioe101",
+    "bioe102",
+    "bioe103",
+    "bioe104",
+    "bioe105",
+    "bioec106a",
+    "bioec106b",
+    "bioe110",
+    "bioe111",
+    "bioec112",
+    "bioe114",
+    "bioe115",
+    "bioe117",
+    "bioe118",
+    "bioec119",
+    "bioe121",
+    "bioe121l",
+    "bioe124",
+    "bioe125",
+    "bioe125b",
+    "bioe131",
+    "bioe135",
+    "bioe134",
+    "bioe140l",
+    "bioe145",
+    "bioe147",
+    "bioe148",
+    "bioe150",
+    "bioe151",
+    "bioec165",
+    "bioe163",
+    "bioe168l",
+    "bioe187",
+    "bioec117",
+    "bioec118",
+    "bioec131",
+  ];
+
   const listOfRelatedRequirements: any[] = [
     ["mse45", "devices", "cell"],
     ["mechec85", "synthetic", "devices"],
@@ -43,35 +82,8 @@ export const CourseMap = () => {
     ["physics7a", "physics7b", "cell", "devices", "imaging", "synthetic"],
     ["math53", "math54", "math55", "cell", "devices", "imaging", "synthetic"],
     ["eecs16a", "eecs16b", "imaging", "devices"],
-
-    ["bioe101", "bioe105", "bioec165", "imaging", "devices", "bioe11"],
-    ["bioe102", "devices", "synthetic", "cell"],
-    ["bioe103", "devices", "synthetic", "cell"],
-    ["bioe104", "devices", "synthetic", "cell"],
-    ["bioe110", "synthetic", "cell", "bioe11", "bioe10"],
-    ["bioe111", "bioe103", "cell"],
-    ["bioe114", "cell", "imaging", "devices", "bioe11"],
-    ["bioe114", "devices", "synthetic", "cell", "bioe11"],
-    ["bioe115", "bioe114", "bioe11", "synthetic", "cell"],
-    ["bioe121", "bioe121l", "devices"],
-    ["bioe124", "bioe103", "bioe104", "cell"],
-    ["bioe134", "bioe103", "synthetic"],
-    ["bioe135", "synthetic"],
-    ["bioe140l", "bioe11", "synthetic"],
-    ["bioe145", "devices"],
-    ["bioe147", "bioe103", "synthetic"],
-    ["bioe148", "bioe103", "synthetic"],
-    ["bioe150", "devices"],
-    ["bioe151", "bioe104", "devices", "bioe11"],
-    ["bioe163", "bioe163l", "bioe102", "devices"],
-    ["bioe168l", "imaging"],
-    ["bioe187", "devices", "synthetic"],
-    ["bioec112", "bioe102", "synthetic", "cell"],
-    ["bioec117", "bioe102", "devices", "cell"],
-    ["bioec118", "bioe103", "devices", "cell"],
-    ["bioec131", "bioe11", "synthetic"],
   ];
-
+  // for arrow location reference only.
   const gen_req_coordinates: {
     course: string;
     x_coordinate: string;
@@ -96,37 +108,37 @@ export const CourseMap = () => {
     { course: "eecs16a", y_coordinate: "25", x_coordinate: "91.6" },
     { course: "eecs16b", y_coordinate: "40", x_coordinate: "91.6" },
     //upper divs
-    { course: "bioe101", y_coordinate: "98", x_coordinate: "75.4" },
-    { course: "bioe105", y_coordinate: "98", x_coordinate: "80.4" },
-    { course: "bioec165", y_coordinate: "98", x_coordinate: "85.4" },
-    { course: "bioe168l", y_coordinate: "98", x_coordinate: "90.4" },
-    { course: "bioe110", y_coordinate: "98", x_coordinate: "20.4" },
-    { course: "bioe114", y_coordinate: "98", x_coordinate: "20.4" },
-    { course: "bioe121", y_coordinate: "32", x_coordinate: "15.4" },
-    { course: "bioe121l", y_coordinate: "47", x_coordinate: "15.4" },
-    { course: "bioe145", y_coordinate: "110", x_coordinate: "20.4" },
-    { course: "bioe151", y_coordinate: "47", x_coordinate: "25.4" },
-    { course: "bioe163", y_coordinate: "32", x_coordinate: "30.4" },
-    { course: "bioe163l", y_coordinate: "47", x_coordinate: "30.4" },
-    { course: "bioec117", y_coordinate: "32", x_coordinate: "35.4" },
-    { course: "bioec118", y_coordinate: "32", x_coordinate: "42" },
-    { course: "bioe150", y_coordinate: "32", x_coordinate: "45.4" },
-    { course: "bioe187", y_coordinate: "98", x_coordinate: "42" },
-    { course: "bioe103", y_coordinate: "98", x_coordinate: "45.4" },
-    { course: "bioe104", y_coordinate: "98", x_coordinate: "50.4" },
-    { course: "bioe102", y_coordinate: "98", x_coordinate: "55.4" },
-    { course: "bioe111", y_coordinate: "98", x_coordinate: "55.4" },
-    { course: "bioe124", y_coordinate: "98", x_coordinate: "60.4" },
-    { course: "bioec112", y_coordinate: "47", x_coordinate: "65.4" },
-    { course: "bioe115", y_coordinate: "47", x_coordinate: "70.4" },
-    { course: "bioe110", y_coordinate: "98", x_coordinate: "60.4" },
-    { course: "bioe114", y_coordinate: "98", x_coordinate: "65.4" },
-    { course: "bioec131", y_coordinate: "98", x_coordinate: "0.4" },
-    { course: "bioe135", y_coordinate: "98", x_coordinate: "5.4" },
-    { course: "bioe140l", y_coordinate: "98", x_coordinate: "10.4" },
-    { course: "bioe134", y_coordinate: "47", x_coordinate: "0.4" },
-    { course: "bioe147", y_coordinate: "47", x_coordinate: "5.4" },
-    { course: "bioe148", y_coordinate: "47", x_coordinate: "10.4" },
+    // { course: "bioe101", y_coordinate: "98", x_coordinate: "75.4" },
+    // { course: "bioe105", y_coordinate: "98", x_coordinate: "80.4" },
+    // { course: "bioec165", y_coordinate: "98", x_coordinate: "85.4" },
+    // { course: "bioe168l", y_coordinate: "98", x_coordinate: "90.4" },
+    // { course: "bioe110", y_coordinate: "98", x_coordinate: "20.4" },
+    // { course: "bioe114", y_coordinate: "98", x_coordinate: "20.4" },
+    // { course: "bioe121", y_coordinate: "32", x_coordinate: "15.4" },
+    // { course: "bioe121l", y_coordinate: "47", x_coordinate: "15.4" },
+    // { course: "bioe145", y_coordinate: "110", x_coordinate: "20.4" },
+    // { course: "bioe151", y_coordinate: "47", x_coordinate: "25.4" },
+    // { course: "bioe163", y_coordinate: "32", x_coordinate: "30.4" },
+    // { course: "bioe163l", y_coordinate: "47", x_coordinate: "30.4" },
+    // { course: "bioec117", y_coordinate: "32", x_coordinate: "35.4" },
+    // { course: "bioec118", y_coordinate: "32", x_coordinate: "42" },
+    // { course: "bioe150", y_coordinate: "32", x_coordinate: "45.4" },
+    // { course: "bioe187", y_coordinate: "98", x_coordinate: "42" },
+    // { course: "bioe103", y_coordinate: "98", x_coordinate: "45.4" },
+    // { course: "bioe104", y_coordinate: "98", x_coordinate: "50.4" },
+    // { course: "bioe102", y_coordinate: "98", x_coordinate: "55.4" },
+    // { course: "bioe111", y_coordinate: "98", x_coordinate: "55.4" },
+    // { course: "bioe124", y_coordinate: "32", x_coordinate: "60.4" },
+    // { course: "bioec112", y_coordinate: "47", x_coordinate: "65.4" },
+    // { course: "bioe115", y_coordinate: "47", x_coordinate: "70.4" },
+    // { course: "bioe110", y_coordinate: "98", x_coordinate: "60.4" },
+    // { course: "bioe114", y_coordinate: "98", x_coordinate: "65.4" },
+    // { course: "bioec131", y_coordinate: "98", x_coordinate: "0.4" },
+    // { course: "bioe135", y_coordinate: "98", x_coordinate: "5.4" },
+    // { course: "bioe140l", y_coordinate: "98", x_coordinate: "10.4" },
+    // { course: "bioe134", y_coordinate: "47", x_coordinate: "0.4" },
+    // { course: "bioe147", y_coordinate: "47", x_coordinate: "5.4" },
+    // { course: "bioe148", y_coordinate: "47", x_coordinate: "10.4" },
   ];
 
   const relationships: {
@@ -191,20 +203,13 @@ export const CourseMap = () => {
     },
   ];
 
-  const upperDivRelationships: {
-    courseid: string;
-    prereqsAndConcentrations: any[];
-    color: string;
-    hiearchy_number: number;
-  }[] = [
-    {
-      courseid: "bioe100",
+  const upperDivRelationships = {
+    bioe100: {
       prereqsAndConcentrations: ["imaging", "devices", "cell", "synthetic"],
       color: "blue",
       hiearchy_number: 1,
     },
-    {
-      courseid: "bioe101",
+    bioe101: {
       prereqsAndConcentrations: [
         "eecs16a",
         "eecs16b",
@@ -217,9 +222,7 @@ export const CourseMap = () => {
       color: "blue",
       hiearchy_number: 1,
     },
-    //new course
-    {
-      courseid: "bioe102",
+    bioe102: {
       prereqsAndConcentrations: [
         "math53",
         "math54",
@@ -231,8 +234,7 @@ export const CourseMap = () => {
       hiearchy_number: 1,
     },
     //bio1a or bioe11
-    {
-      courseid: "bioe103",
+    bioe103: {
       prereqsAndConcentrations: [
         "physics7a",
         "physics7b",
@@ -248,8 +250,7 @@ export const CourseMap = () => {
       color: "blue",
       hiearchy_number: 1,
     },
-    {
-      courseid: "bioe104",
+    bioe104: {
       prereqsAndConcentrations: [
         "math53",
         "math54",
@@ -260,15 +261,13 @@ export const CourseMap = () => {
       color: "blue",
       hiearchy_number: 1,
     },
-    {
-      courseid: "bioe105",
+    bioe105: {
       prereqsAndConcentrations: ["math53", "physics7a", "physics7b", "devices"],
       color: "blue",
       hiearchy_number: 1,
     },
     //new course: math 54 or 16a/16b
-    {
-      courseid: "bioec106a",
+    bioec106a: {
       prereqsAndConcentrations: [
         "math54",
         "eecs16a",
@@ -281,8 +280,7 @@ export const CourseMap = () => {
       hiearchy_number: 1,
     },
     //new course:
-    {
-      courseid: "bioec106b",
+    bioec106b: {
       prereqsAndConcentrations: [
         "eecsc106a",
         "bioec106a",
@@ -293,8 +291,7 @@ export const CourseMap = () => {
       color: "blue",
       hiearchy_number: 1,
     },
-    {
-      courseid: "bioe110",
+    bioe110: {
       prereqsAndConcentrations: [
         "bioe10",
         "bioe11",
@@ -306,8 +303,7 @@ export const CourseMap = () => {
       color: "blue",
       hiearchy_number: 1,
     },
-    {
-      courseid: "bioe111",
+    bioe111: {
       prereqsAndConcentrations: [
         "chem1a",
         "chem4a",
@@ -322,8 +318,7 @@ export const CourseMap = () => {
       hiearchy_number: 1,
     },
     //new course: "bioe102", "mecec85", "civec30"
-    {
-      courseid: "bioec112",
+    bioec112: {
       prereqsAndConcentrations: [
         "bioe102",
         "mecec85",
@@ -336,15 +331,13 @@ export const CourseMap = () => {
       hiearchy_number: 1,
     },
     //new course bioe11 or bio1a
-    {
-      courseid: "bioe114",
+    bioe114: {
       prereqsAndConcentrations: ["bio1a", "bioe11"],
       color: "blue",
       hiearchy_number: 1,
     },
     //bioe114 or bioe 202
-    {
-      courseid: "bioe115",
+    bioe115: {
       prereqsAndConcentrations: [
         "bioe114",
         "bioe11",
@@ -356,14 +349,12 @@ export const CourseMap = () => {
       hiearchy_number: 1,
     },
     //new course: MEC ENG 108, BIO ENG 102, MAT SCI 113 or equivalent
-    {
-      courseid: "bioe117",
+    bioe117: {
       prereqsAndConcentrations: ["mece108", "bioe102", "matsci113", "devices"],
       color: "blue",
       hiearchy_number: 1,
     },
-    {
-      courseid: "bioe118",
+    bioe118: {
       prereqsAndConcentrations: [
         "matsci45",
         "bioe103",
@@ -377,14 +368,12 @@ export const CourseMap = () => {
       hiearchy_number: 1,
     },
     //new course: mecec85 or civec30 or bioe102
-    {
-      courseid: "bioec119",
+    bioec119: {
       prereqsAndConcentrations: ["mecec85", "civec30", "bioe102"],
       color: "blue",
       hiearchy_number: 1,
     },
-    {
-      courseid: "bioe121",
+    bioe121: {
       prereqsAndConcentrations: [
         "chem3a",
         "physics7a",
@@ -395,33 +384,28 @@ export const CourseMap = () => {
       color: "blue",
       hiearchy_number: 1,
     },
-    {
-      courseid: "bioe121L",
+    bioe121l: {
       prereqsAndConcentrations: ["bioe104", "bioe121", "devices"],
       color: "blue",
       hiearchy_number: 1,
     },
-    {
-      courseid: "bioe124",
+    bioe124: {
       prereqsAndConcentrations: ["bioe11", "chem3b", "bioe103", "bioe104"],
       color: "blue",
       hiearchy_number: 1,
     },
-    {
-      courseid: "bioe125",
+    bioe125: {
       prereqsAndConcentrations: ["Eleng120", "devices"],
       color: "blue",
       hiearchy_number: 1,
     },
-    {
-      courseid: "bioe125b",
+    bioe125b: {
       prereqsAndConcentrations: ["eecsc106a", "bioec125"],
       color: "blue",
       hiearchy_number: 1,
     },
     //bioe11 or bio1a
-    {
-      courseid: "bioe131",
+    bioe131: {
       prereqsAndConcentrations: [
         "bioe11",
         "bio1a",
@@ -432,80 +416,91 @@ export const CourseMap = () => {
       color: "blue",
       hiearchy_number: 1,
     },
-    {
-      courseid: "bioe145",
+    bioe134: {
+      prereqsAndConcentrations: ["cs61b", "bioe11", "bioe103", "synthetic"],
+      color: "blue",
+      hiearchy_number: 1,
+    },
+    bioe135: {
+      prereqsAndConcentrations: ["synthetic"],
+      color: "blue",
+      hiearchy_number: 1,
+    }, // bioe11 or bio1a
+    bioe140l: {
+      prereqsAndConcentrations: ["bioe11", "bio1a"],
+      color: "blue",
+      hiearchy_number: 1,
+    },
+    bioe145: {
       prereqsAndConcentrations: ["devices"],
       color: "blue",
       hiearchy_number: 1,
     },
-    {
-      courseid: "bioe147",
+    bioe147: {
       prereqsAndConcentrations: ["bioe103", "synthetic"],
       color: "blue",
       hiearchy_number: 1,
     },
-    {
-      courseid: "bioe148",
+    bioe148: {
       prereqsAndConcentrations: ["bioe103", "synthetic"],
       color: "blue",
       hiearchy_number: 1,
     },
-    {
-      courseid: "bioe150",
+    bioe150: {
       prereqsAndConcentrations: ["devices"],
       color: "blue",
       hiearchy_number: 1,
     },
-    {
-      courseid: "bioe151",
+    bioe151: {
       prereqsAndConcentrations: ["bioe104", "devices", "bioe11"],
       color: "blue",
       hiearchy_number: 1,
     },
-    {
-      courseid: "bioe163",
+    bioe163: {
       prereqsAndConcentrations: ["bioe163l", "bioe102", "devices"],
       color: "blue",
       hiearchy_number: 1,
     },
-    {
-      courseid: "bioe168l",
+    bioec165: {
+      prereqsAndConcentrations: [
+        "eecs16b",
+        "eecs16a",
+        "devices",
+        "imaging",
+        "eleng20",
+        "math54",
+        "bioe105",
+        "bioe101",
+      ],
+      color: "blue",
+      hiearchy_number: 1,
+    },
+    bioe168l: {
       prereqsAndConcentrations: ["imaging"],
       color: "blue",
       hiearchy_number: 1,
     },
-    {
-      courseid: "bioe187",
+    bioe187: {
       prereqsAndConcentrations: ["devices", "synthetic"],
       color: "blue",
       hiearchy_number: 1,
     },
-    {
-      courseid: "bioec112",
-      prereqsAndConcentrations: ["bioe102", "synthetic", "cell"],
-      color: "blue",
-      hiearchy_number: 1,
-    },
-    {
-      courseid: "bioec117",
+    bioec117: {
       prereqsAndConcentrations: ["bioe102", "devices", "cell"],
       color: "blue",
       hiearchy_number: 1,
     },
-    {
-      courseid: "bioec118",
+    bioec118: {
       prereqsAndConcentrations: ["bioe103", "devices", "cell"],
       color: "blue",
       hiearchy_number: 1,
     },
-    {
-      courseid: "bioec131",
+    bioec131: {
       prereqsAndConcentrations: ["bioe11", "synthetic"],
       color: "blue",
       hiearchy_number: 1,
     },
-  ];
-
+  };
   const ListOfCourseInfo: { courseid: string; courseName: string }[] = [
     { courseid: "mse45", courseName: "MSE 45" },
     { courseid: "mechec85", courseName: "MECHE C85" },
@@ -529,11 +524,14 @@ export const CourseMap = () => {
 
   const ListOfUpperDivInfo: { courseid: string; courseName: string }[] = [
     { courseid: "bioe101", courseName: "BIOE 101" },
+    { courseid: "bioe102", courseName: "BIOE 102" },
     { courseid: "bioe105", courseName: "BIOE 105" },
+    { courseid: "bioec106a", courseName: "BIOE C106A" },
     { courseid: "bioec165", courseName: "BIOE 165" },
     { courseid: "bioe168l", courseName: "BIOE 168L" },
     { courseid: "bioe121", courseName: "BIOE 121" },
     { courseid: "bioe121l", courseName: "BIOE 121L" },
+    { courseid: "bioe124", courseName: "BIOE 124" },
     { courseid: "bioe145", courseName: "BIOE 145" },
     { courseid: "bioe151", courseName: "BIOE 151" },
     { courseid: "bioe163", courseName: "BIOE 163" },
@@ -558,49 +556,62 @@ export const CourseMap = () => {
     { courseid: "bioe147", courseName: "BIOE 147" },
     { courseid: "bioe148", courseName: "BIOE 148" },
   ];
-
-  const [NonOpaqueList, setNonOpaqueList] = useState<string[]>([]);
+  const totalList = [...listOfGenReq, ...listOfConcentrations, ...listOfUpDiv];
+  const [HighlightedList, setHighlightedList] = useState<string[]>([]);
   const [isHoveredOver, setHoveredOver] = useState(false);
   const [OpaqueList, setOpaqueList] = useState<string[]>([]);
 
   // FUNCTIONS
   // on MouseOver set hovered over to be true and then set all related courses to be non-opaque
 
-  // const onMouseOver = (courseId: string) => {
-  //   setHoveredOver(true);
-  //   let totalList: string[] = [];
-  //   if (listOfGenReq.includes(courseId)) {
-  //     for (let i = 0; i < listOfRelatedRequirements.length; i++) {
-  //       if (listOfRelatedRequirements[i].includes(courseId)) {
-  //         totalList = totalList.concat(listOfRelatedRequirements[i]);
-  //       }
-  //     }
-  //   } else {
-  //     totalList = totalList.concat();
-  //   }
-  //   totalList = [...new Set(totalList)];
-  //   if (listOfConcentrations.includes(courseId)) {
-  //     //If it is a concentration
-  //     let opaqueList = listOfConcentrations.filter(
-  //       // filters out other concentrations and makes them opaque
-  //       (concentration) => concentration !== courseId
-  //     );
-  //     let newTotalList = totalList.filter(
-  //       (course) => !opaqueList.includes(course)
-  //     );
-  //     //task need to remove opaque list from non opaque list
-  //     setOpaqueList(opaqueList); //set all other concentrations to be opaque
-  //     setNonOpaqueList(newTotalList);
-  //   } else {
-  //     setOpaqueList([]);
-  //     setNonOpaqueList(totalList);
-  //   }
-  // };
+  const onMouseOver = (courseId: string) => {
+    setHoveredOver(true);
+    let HighlightedList: string[] = [];
+    if (listOfGenReq.includes(courseId)) {
+      // if it is a general requirement
+      for (let i = 0; i < listOfRelatedRequirements.length; i++) {
+        if (listOfRelatedRequirements[i].includes(courseId)) {
+          // add related requirements to HighlightedList
+          HighlightedList = HighlightedList.concat(
+            listOfRelatedRequirements[i]
+          );
+        }
+      }
+    } else if (listOfConcentrations.includes(courseId)) {
+      //If it is a concentration
+      let otherConcentrations = listOfConcentrations.filter(
+        (concentration) => concentration != courseId
+      );
+      // add related courses
+      for (let i = 0; i < listOfRelatedRequirements.length; i++) {
+        if (listOfRelatedRequirements[i].includes(courseId)) {
+          // add related requirements to HighlightedList
+          let related_courses = listOfRelatedRequirements[i].filter(
+            (course) => !otherConcentrations.includes(course)
+          );
+          HighlightedList = HighlightedList.concat(related_courses);
+        }
+      }
+    } else if (listOfUpDiv.includes(courseId)) {
+      // Please fill in the rest
+      HighlightedList =
+        upperDivRelationships[courseId].prereqsAndConcentrations || [];
+      HighlightedList = [courseId, ...HighlightedList];
+    } else {
+      setOpaqueList([]);
+      setHighlightedList(HighlightedList);
+    }
+    let opaqueList = totalList.filter(
+      (course) => !HighlightedList.includes(course)
+    );
+    setOpaqueList(opaqueList);
+    setHighlightedList(HighlightedList);
+  };
 
   // on MouseOut, set hovered over to be equal to false again and set non-opaque list to nothing
   function onMouseOut(courseId: string) {
     setHoveredOver(false);
-    setNonOpaqueList([]);
+    setHighlightedList([]);
     setOpaqueList([]);
   }
 
@@ -621,7 +632,8 @@ export const CourseMap = () => {
                 key={i + subject}
                 className={
                   isHoveredOver
-                    ? NonOpaqueList.includes(i) && !OpaqueList.includes(subject)
+                    ? HighlightedList.includes(i) &&
+                      !OpaqueList.includes(subject)
                       ? "arrow"
                       : "arrow opaque-arrow"
                     : "arrow"
@@ -642,7 +654,7 @@ export const CourseMap = () => {
             key={courseInfo.courseid}
             className={
               isHoveredOver
-                ? NonOpaqueList.includes(courseInfo.courseid) &&
+                ? HighlightedList.includes(courseInfo.courseid) &&
                   !OpaqueList.includes(courseInfo.courseid)
                   ? "circle highlight-border"
                   : "circle opaque"
@@ -715,7 +727,7 @@ export const CourseMap = () => {
             key={courseInfo.courseid}
             className={
               isHoveredOver
-                ? NonOpaqueList.includes(courseInfo.courseid)
+                ? HighlightedList.includes(courseInfo.courseid)
                   ? "small-circle highlight-border"
                   : "small-circle opaque"
                 : "small-circle"
