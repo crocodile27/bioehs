@@ -163,31 +163,38 @@ svg {
 #eecs16b { background-color: #cccccc; top: 40%; left: 100%; ;} 
 
 #bioe101 { background-color: #00bfff; top: 17%; left: 77.5%; }
-#bioe105 { background-color: #00bfff; top: 17%; left: 82.5%; }
-#bioec165 { background-color: #00bfff; top: 17%; left: 87.5%; }
-#bioe168l { background-color: #00bfff; top: 17%; left: 92.5%; }
-#bioe110 { background-color: #00bfff; top: 17%; left: 22.5%; }
-#bioe114 { background-color: #00bfff; top: 32%; left: 22.5%; }
-#bioe121 { background-color: #00bfff; top: 32%; left: 17.5%; }
-#bioe121l { background-color: #00bfff; top: 47%; left: 17.5%; }
-#bioe145 { background-color: #00bfff; top: 32%; left: 22.5%; }
-#bioe151 { background-color: #00bfff; top: 47%; left: 27.5%; }
-#bioe163 { background-color: #00bfff; top: 32%; left: 32.5%; }
-#bioe163l { background-color: #00bfff; top: 47%; left: 32.5%; }
-#bioec106a { background-color:#00bfff; top:17%; left: 72.5%}
-#bioec117 { background-color: #00bfff; top: 32%; left: 37.5%; }
-#bioec118 { background-color: #00bfff; top: 32%; left: 42.5%; }
-#bioe150 { background-color: #00bfff; top: 32%; left: 47.5%; }
-#bioe187 { background-color: #00bfff; top: 17%; left: 42.5%; }
+#bioe102 { background-color: #00bfff; top: 17%; left: 57.5%; }
 #bioe103 { background-color: #00bfff; top: 17%; left: 47.5%; }
 #bioe104 { background-color: #00bfff; top: 17%; left: 52.5%; }
-#bioe102 { background-color: #00bfff; top: 17%; left: 57.5%; }
+#bioe105 { background-color: #00bfff; top: 17%; left: 82.5%; }
+#bioec106a { background-color:#00bfff; top:17%; left: 72.5%}
+#bioec106b { background-color:#00bfff; top:32%; left: 72.5%}
+#bioe110 { background-color: #00bfff; top: 17%; left: 22.5%; }
 #bioe111 { background-color: #00bfff; top: 32%; left: 57.5%; }
-#bioe124 { background-color: #00bfff; top: 17%; left: 62.5%; }
+
 #bioec112 { background-color: #00bfff; top: 47%; left: 67.5%; }
 #bioe115 { background-color: #00bfff; top: 47%; left: 72.5%; }
 #bioe110 { background-color: #00bfff; top: 17%; left: 62.5%; }
 #bioe114 { background-color: #00bfff; top: 17%; left: 67.5%; }
+#bioe115 { background-color: #00bfff; top: 32%; left: 67.5%; }
+#bioe117 { background-color: #00bfff; top: 32%; left: 52.5%; }
+#bioec119 { background-color: #00bfff; top: 47%; left: 57.5%; }
+#bioec117 { background-color: #00bfff; top: 32%; left: 37.5%; }
+#bioec118 { background-color: #00bfff; top: 32%; left: 42.5%; }
+#bioe121 { background-color: #00bfff; top: 32%; left: 17.5%; }
+#bioe121l { background-color: #00bfff; top: 47%; left: 17.5%; }
+#bioe124 { background-color: #00bfff; top: 32%; left: 62.5%; }
+#bioe145 { background-color: #00bfff; top: 32%; left: 22.5%; }
+#bioe150 { background-color: #00bfff; top: 32%; left: 47.5%; }
+#bioe151 { background-color: #00bfff; top: 47%; left: 27.5%; }
+#bioe163 { background-color: #00bfff; top: 32%; left: 32.5%; }
+#bioe163l { background-color: #00bfff; top: 47%; left: 32.5%; }
+#bioec165 { background-color: #00bfff; top: 17%; left: 87.5%; }
+#bioe168l { background-color: #00bfff; top: 17%; left: 92.5%; }
+
+
+#bioe187 { background-color: #00bfff; top: 17%; left: 42.5%; }
+
 #bioec131 { background-color: #00bfff; top: 17%; left: 2.5%; }
 #bioe135 { background-color: #00bfff; top: 17%; left: 7.5%; }
 #bioe140l { background-color: #00bfff; top: 17%; left: 12.5%; }

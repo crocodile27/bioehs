@@ -321,7 +321,7 @@ export const CourseMap = () => {
     bioec112: {
       prereqsAndConcentrations: [
         "bioe102",
-        "mecec85",
+        "mechec85",
         "civec30",
         "devices",
         "cell",
@@ -356,7 +356,7 @@ export const CourseMap = () => {
     },
     bioe118: {
       prereqsAndConcentrations: [
-        "matsci45",
+        "mse45",
         "bioe103",
         "bioe102",
         "bioe104",
@@ -369,7 +369,7 @@ export const CourseMap = () => {
     },
     //new course: mecec85 or civec30 or bioe102
     bioec119: {
-      prereqsAndConcentrations: ["mecec85", "civec30", "bioe102"],
+      prereqsAndConcentrations: ["mechec85", "civec30", "bioe102"],
       color: "blue",
       hiearchy_number: 1,
     },
@@ -527,6 +527,10 @@ export const CourseMap = () => {
     { courseid: "bioe102", courseName: "BIOE 102" },
     { courseid: "bioe105", courseName: "BIOE 105" },
     { courseid: "bioec106a", courseName: "BIOE C106A" },
+    { courseid: "bioec106b", courseName: "BIOE C106B" },
+    { courseid: "bioe110", courseName: "BIOE 110" },
+    { courseid: "bioe117", courseName: "BIOE 117" },
+    { courseid: "bioec119", courseName: "BIOE C119" },
     { courseid: "bioec165", courseName: "BIOE 165" },
     { courseid: "bioe168l", courseName: "BIOE 168L" },
     { courseid: "bioe121", courseName: "BIOE 121" },
