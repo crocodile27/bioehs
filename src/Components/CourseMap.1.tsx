@@ -65,6 +65,7 @@ export const CourseMap = () => {
     "bioe151",
     "bioec165",
     "bioe163",
+    "bioe163l",
     "bioe168l",
     "bioe187",
     "bioec117",
@@ -457,7 +458,12 @@ export const CourseMap = () => {
       hiearchy_number: 1,
     },
     bioe163: {
-      prereqsAndConcentrations: ["bioe163l", "bioe102", "devices"],
+      prereqsAndConcentrations: ["chem3a", "physics7b", "bioe102", "devices"],
+      color: "blue",
+      hiearchy_number: 1,
+    },
+    bioe163l: {
+      prereqsAndConcentrations: ["bioe163", "devices"],
       color: "blue",
       hiearchy_number: 1,
     },
