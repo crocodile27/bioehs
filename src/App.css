@@ -1,4 +1,21 @@
 /* styles.css */
+
+/* Main container that wraps all content */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full viewport height for scrolling */
+}
+
+/* Content area that will grow to fill space between header and footer */
+.main-content {
+  flex: 1; /* This allows the main content to grow as needed */
+  padding: 20px;
+  overflow-y: auto; /* Enables scrolling if content overflows */
+}
+
+
+
 body {
   font-family: Arial, sans-serif;
   display: flex;
@@ -63,7 +80,32 @@ svg {
   height: 50%;
   display: flex;
   justify-content: space-around;
-  align-items:center;
+  align-items: center;
+  z-index: 2; /* Add this to bring upper-div-container to the front */
+}
+
+/* Assuming courseMapSummary is the class for the summary box */
+.courseMapSummary {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: auto; /* Adjust width as needed */
+  margin: 0 auto;
+  padding: 20px;
+  background: white; /* Ensure it stands out */
+  z-index: 0; /* Make sure it’s on top */
+  font-size: smaller;
+}
+
+.courseMapSummary h3 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.courseMapSummary p {
+  font-size: 1em;
+  color: #666;
 }
 
 .circle {
@@ -200,6 +242,7 @@ svg {
 #bioe134 { background-color: #00bfff; top: 47%; left: 2.5%; }
 #bioe147 { background-color: #00bfff; top: 47%; left: 7.5%; }
 #bioe148 { background-color: #00bfff; top: 47%; left: 12.5%; }
+
 /* 101:77.5, 105:, 165, 168l */
 /* c131, 135:, 140l:12.5, 134:2.5, 147:7.5, 148:7.5 */
 

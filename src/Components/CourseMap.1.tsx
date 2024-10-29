@@ -591,7 +591,7 @@ export const CourseMap = () => {
     } else if (listOfConcentrations.includes(courseId)) {
       //If it is a concentration
       let otherConcentrations = listOfConcentrations.filter(
-        (concentration) => concentration != courseId
+        (concentration) => concentration !== courseId
       );
       // add related courses
       for (let i = 0; i < listOfRelatedRequirements.length; i++) {
@@ -635,120 +635,138 @@ export const CourseMap = () => {
   //CourseMap Layout STARTS HERE
   return (
     <div className="main-container">
-      <div className="container-arrows">
-        {relationships.map((relationship) =>
-          relationship.gen_req.map((i) =>
-            relationship.concentrations.map((subject) => (
-              <Arrow
-                key={i + subject}
-                className={
-                  isHoveredOver
-                    ? HighlightedList.includes(i) &&
-                      !OpaqueList.includes(subject)
-                      ? "arrow"
-                      : "arrow opaque-arrow"
-                    : "arrow"
-                }
-                hiearchy_number={relationship.hiearchy_number}
-                color={relationship.color}
-                start_x={getXYCoordinate(i)[0]}
-                start_y={getXYCoordinate(i)[1]}
-                subject={subject}
-              />
-            ))
-          )
-        )}
-      </div>
-      <div className="container">
-        {ListOfCourseInfo.map((courseInfo) => (
-          <GeneralRequirements
-            key={courseInfo.courseid}
+      <div className="main-content">
+        <div className="container-arrows">
+          {relationships.map((relationship) =>
+            relationship.gen_req.map((i) =>
+              relationship.concentrations.map((subject) => (
+                <Arrow
+                  key={i + subject}
+                  className={
+                    isHoveredOver
+                      ? HighlightedList.includes(i) &&
+                        !OpaqueList.includes(subject)
+                        ? "arrow"
+                        : "arrow opaque-arrow"
+                      : "arrow"
+                  }
+                  hiearchy_number={relationship.hiearchy_number}
+                  color={relationship.color}
+                  start_x={getXYCoordinate(i)[0]}
+                  start_y={getXYCoordinate(i)[1]}
+                  subject={subject}
+                />
+              ))
+            )
+          )}
+        </div>
+        <div className="container">
+          {ListOfCourseInfo.map((courseInfo) => (
+            <GeneralRequirements
+              key={courseInfo.courseid}
+              className={
+                isHoveredOver
+                  ? HighlightedList.includes(courseInfo.courseid) &&
+                    !OpaqueList.includes(courseInfo.courseid)
+                    ? "circle highlight-border"
+                    : "circle opaque"
+                  : "circle"
+              }
+              courseName={courseInfo.courseName}
+              id={courseInfo.courseid}
+              onMouseOver={() => onMouseOver(courseInfo.courseid)}
+              onMouseOut={() => onMouseOut(courseInfo.courseid)}
+            />
+          ))}
+        </div>
+        <div className="sub-container">
+          <Concentrations
             className={
               isHoveredOver
-                ? HighlightedList.includes(courseInfo.courseid) &&
-                  !OpaqueList.includes(courseInfo.courseid)
-                  ? "circle highlight-border"
-                  : "circle opaque"
-                : "circle"
+                ? OpaqueList.includes("synthetic")
+                  ? "concentration opaque"
+                  : "concentration highlight-border"
+                : "concentration"
             }
-            courseName={courseInfo.courseName}
-            id={courseInfo.courseid}
-            onMouseOver={() => onMouseOver(courseInfo.courseid)}
-            onMouseOut={() => onMouseOut(courseInfo.courseid)}
+            concentrationName={"Synthetic and Computational Biology"}
+            id={"synthetic"}
+            onMouseOver={() => onMouseOver("synthetic")}
+            onMouseOut={() => onMouseOut("synthetic")}
           />
-        ))}
-      </div>
-      <div className="sub-container">
-        <Concentrations
-          className={
-            isHoveredOver
-              ? OpaqueList.includes("synthetic")
-                ? "concentration opaque"
-                : "concentration highlight-border"
-              : "concentration"
-          }
-          concentrationName={"Synthetic and Computational Biology"}
-          id={"synthetic"}
-          onMouseOver={() => onMouseOver("synthetic")}
-          onMouseOut={() => onMouseOut("synthetic")}
-        />
-        <Concentrations
-          className={
-            isHoveredOver
-              ? OpaqueList.includes("cell")
-                ? "concentration opaque"
-                : "concentration highlight-border"
-              : "concentration"
-          }
-          concentrationName={"Cell & Tissue Engineering"}
-          id={"cell"}
-          onMouseOver={() => onMouseOver("cell")}
-          onMouseOut={() => onMouseOut("cell")}
-        />
-        <Concentrations
-          className={
-            isHoveredOver
-              ? OpaqueList.includes("devices")
-                ? "concentration opaque"
-                : "concentration highlight-border"
-              : "concentration"
-          }
-          concentrationName={"Devices"}
-          id={"devices"}
-          onMouseOver={() => onMouseOver("devices")}
-          onMouseOut={() => onMouseOut("devices")}
-        />
-        <Concentrations
-          className={
-            isHoveredOver
-              ? OpaqueList.includes("imaging")
-                ? "concentration opaque"
-                : "concentration highlight-border"
-              : "concentration"
-          }
-          concentrationName={"Imaging"}
-          id={"imaging"}
-          onMouseOver={() => onMouseOver("imaging")}
-          onMouseOut={() => onMouseOut("imaging")}
-        />
-      </div>
-      <div className="upper-div-container">
-        {ListOfUpperDivInfo.map((courseInfo) => (
-          <GeneralRequirements
-            key={courseInfo.courseid}
+          <Concentrations
             className={
               isHoveredOver
-                ? HighlightedList.includes(courseInfo.courseid)
-                  ? "small-circle highlight-border"
-                  : "small-circle opaque"
-                : "small-circle"
+                ? OpaqueList.includes("cell")
+                  ? "concentration opaque"
+                  : "concentration highlight-border"
+                : "concentration"
             }
-            courseName={courseInfo.courseName}
-            id={courseInfo.courseid}
-            onMouseOver={() => onMouseOver(courseInfo.courseid)}
-            onMouseOut={() => onMouseOut(courseInfo.courseid)}
+            concentrationName={"Cell & Tissue Engineering"}
+            id={"cell"}
+            onMouseOver={() => onMouseOver("cell")}
+            onMouseOut={() => onMouseOut("cell")}
           />
-        ))}
+          <Concentrations
+            className={
+              isHoveredOver
+                ? OpaqueList.includes("devices")
+                  ? "concentration opaque"
+                  : "concentration highlight-border"
+                : "concentration"
+            }
+            concentrationName={"Devices"}
+            id={"devices"}
+            onMouseOver={() => onMouseOver("devices")}
+            onMouseOut={() => onMouseOut("devices")}
+          />
+          <Concentrations
+            className={
+              isHoveredOver
+                ? OpaqueList.includes("imaging")
+                  ? "concentration opaque"
+                  : "concentration highlight-border"
+                : "concentration"
+            }
+            concentrationName={"Imaging"}
+            id={"imaging"}
+            onMouseOver={() => onMouseOver("imaging")}
+            onMouseOut={() => onMouseOut("imaging")}
+          />
+        </div>
+        <div className="upper-div-container">
+          {ListOfUpperDivInfo.map((courseInfo) => (
+            <GeneralRequirements
+              key={courseInfo.courseid}
+              className={
+                isHoveredOver
+                  ? HighlightedList.includes(courseInfo.courseid)
+                    ? "small-circle highlight-border"
+                    : "small-circle opaque"
+                  : "small-circle"
+              }
+              courseName={courseInfo.courseName}
+              id={courseInfo.courseid}
+              onMouseOver={() => onMouseOver(courseInfo.courseid)}
+              onMouseOut={() => onMouseOut(courseInfo.courseid)}
+            />
+          ))}
+        </div>
+      </div>
+      <div className="courseMapSummary">
+        <div>
+          <p>
+            Hi! This was curated by Anthea and Buvi from Bioengineering Honor
+            Society and we hope it will be helpful. Feel free to slack or email
+            us at bioehs.webmaster@gmail.com with any comments or suggestions.{" "}
+            <h3>How to use this course map:</h3>
+            <p>
+              All upper division courses highlight their respective
+              prerequisites. Note that BioE11 has the alternative prerequisite
+              of Bio1A in most cases, check this website to be sure:
+              https://guide.berkeley.edu/courses/bio_eng/
+            </p>
+          </p>
+        </div>
       </div>
     </div>
   );
