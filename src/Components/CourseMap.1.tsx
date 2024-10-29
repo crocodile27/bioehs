@@ -749,20 +749,21 @@ export const CourseMap = () => {
           />
         ))}
       </div>
-      <div>
-        <h3>How to use this course map:</h3>
-        <p>
-          All upper division courses highlight their respective prerequisites.
-          All concentrations map to all related courses and lower divs map to
-          related concentrations. Note that BioE11 has the alternative
-          prerequisite of Bio1A in most cases, check this website to be sure:
-          https://guide.berkeley.edu/courses/bio_eng/
-        </p>
-        <p>
-          Hi! This was curated by Anthea and Buvi from Bioengineering Honor
-          Society and we hope it will be helpful. Feel free to slack or email us
-          at bioehs.webmaster@gmail.com with any comments or suggestions.
-        </p>
+      <div className="courseMapSummary">
+        <div>
+          <p>
+            Hi! This was curated by Anthea and Buvi from Bioengineering Honor
+            Society and we hope it will be helpful. Feel free to slack or email
+            us at bioehs.webmaster@gmail.com with any comments or suggestions.{" "}
+            <h3>How to use this course map:</h3>
+            <p>
+              All upper division courses highlight their respective
+              prerequisites. Note that BioE11 has the alternative prerequisite
+              of Bio1A in most cases, check this website to be sure:
+              https://guide.berkeley.edu/courses/bio_eng/
+            </p>
+          </p>
+        </div>
       </div>
     </div>
   );
