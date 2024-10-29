@@ -1,5 +1,20 @@
 /* styles.css */
 
+/* Main container that wraps all content */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full viewport height for scrolling */
+}
+
+/* Content area that will grow to fill space between header and footer */
+.main-content {
+  flex: 1; /* This allows the main content to grow as needed */
+  padding: 20px;
+  overflow-y: auto; /* Enables scrolling if content overflows */
+}
+
+
 
 body {
   font-family: Arial, sans-serif;
