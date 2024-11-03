@@ -228,7 +228,7 @@ export const CourseMap = () => {
       prereqsAndConcentrations: [
         "math53",
         "math54",
-        "physic7a",
+        "physics7a",
         "cell",
         "devices",
       ],
@@ -611,15 +611,14 @@ export const CourseMap = () => {
       }
 
       // Loop through the upperDivRelationships map
-      for (const [courseId, courseInfo] of Object.entries(
+      for (const [upperDiv, upperDivCourseInfo] of Object.entries(
         upperDivRelationships
       )) {
-        // Check if any concentration in listOfConcentrations is in the course's prereqsAndConcentrations
-        let related_courses = upperDivRelationships[courseId].filter(
-          (course) => !otherConcentrations.includes(course)
-        );
-
-        HighlightedList = HighlightedList.concat(related_courses);
+        // Check if the course's prereqsAndConcentrations contains the courseId
+        if (upperDivCourseInfo.prereqsAndConcentrations.includes(courseId)) {
+          // Add the upperDiv course to HighlightedList
+          HighlightedList.push(upperDiv);
+        }
       }
 
       // Ensure HighlightedList has unique courses
