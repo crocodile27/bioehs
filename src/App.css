@@ -81,7 +81,7 @@ svg {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  z-index: 2; /* Add this to bring upper-div-container to the front */
+  z-index: 0; /* Add this to bring upper-div-container to the front */
 }
 
 /* Assuming courseMapSummary is the class for the summary box */

@@ -777,16 +777,20 @@ export const CourseMap = () => {
         <div>
           <p>
             Hi! This project was curated by Anthea from Bioengineering Honor
-            Society and assisted by Buvi. Feel free to fill in this form:
-            https://forms.gle/endBsmRMRvLCtTHi7 with any comments or
-            suggestions. Subscribe to our latest updates to help you choose
-            classes more efficiently: https://forms.gle/4ZhuwB3gr7xHQ73GA
+            Society and assisted by Buvi. Feel free to fill in this{" "}
+            <a href="https://forms.gle/endBsmRMRvLCtTHi7">form</a> with any
+            comments or suggestions.{" "}
+            <a href="https://forms.gle/4ZhuwB3gr7xHQ73GA">Subscribe </a>to our
+            latest updates to help you choose classes more efficiently.
             <h3>How to use this course map:</h3>
             <p>
               All upper division courses highlight their respective
               prerequisites. Note that BioE11 has the alternative prerequisite
-              of Bio1A in most cases, check this website to be sure:
-              https://guide.berkeley.edu/courses/bio_eng/
+              of Bio1A in most cases, check{" "}
+              <a href="https://guide.berkeley.edu/courses/bio_eng/">
+                this website
+              </a>{" "}
+              to be sure.
             </p>
           </p>
         </div>
