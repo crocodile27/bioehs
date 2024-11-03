@@ -781,12 +781,14 @@ export const CourseMap = () => {
             <a href="https://forms.gle/endBsmRMRvLCtTHi7">form</a> with any
             comments or suggestions.{" "}
             <a href="https://forms.gle/4ZhuwB3gr7xHQ73GA">Subscribe </a>to our
-            latest updates to help you choose classes more efficiently.
+            latest updates on the course map so you can best utilize this free
+            tool.
             <h3>How to use this course map:</h3>
             <p>
               All upper division courses highlight their respective
               prerequisites. Note that BioE11 has the alternative prerequisite
-              of Bio1A in most cases, check{" "}
+              of Bio1A in most cases, and concentrations are observations from
+              Anthea not the department guide yet check{" "}
               <a href="https://guide.berkeley.edu/courses/bio_eng/">
                 this website
               </a>{" "}
