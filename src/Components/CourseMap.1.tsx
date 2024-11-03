@@ -615,15 +615,11 @@ export const CourseMap = () => {
         upperDivRelationships
       )) {
         // Check if any concentration in listOfConcentrations is in the course's prereqsAndConcentrations
-        let matchingConcentrations = listOfConcentrations.filter(
-          (concentration) =>
-            courseInfo.prereqsAndConcentrations.includes(concentration)
+        let related_courses = upperDivRelationships[courseId].filter(
+          (course) => !otherConcentrations.includes(course)
         );
 
-        // If there are matching concentrations, add the course to HighlightedList
-        if (matchingConcentrations.length > 0) {
-          HighlightedList.push(courseId);
-        }
+        HighlightedList = HighlightedList.concat(related_courses);
       }
 
       // Ensure HighlightedList has unique courses
