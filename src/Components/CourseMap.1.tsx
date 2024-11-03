@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import GeneralRequirements from "./GeneralRequirements.tsx";
 import Concentrations from "./Concentrations.tsx";
 import Arrow from "./Arrow.tsx";
-import StraightArrow from "./StraightArrow.tsx";
+import Upperdivs from "./Upperdivs.tsx";
 
 export const CourseMap = () => {
   const listOfConcentrations: string[] = [
@@ -529,9 +529,15 @@ export const CourseMap = () => {
     { courseid: "eecs16b", courseName: "EECS 16B" },
   ];
 
-  const ListOfUpperDivInfo: { courseid: string; courseName: string }[] = [
+  const ListOfUpperDivInfo: {
+    courseid: string;
+    courseName: string;
+  }[] = [
     { courseid: "bioe101", courseName: "BIOE 101" },
-    { courseid: "bioe102", courseName: "BIOE 102" },
+    {
+      courseid: "bioe102",
+      courseName: "BIOE 102",
+    },
     { courseid: "bioe105", courseName: "BIOE 105" },
     { courseid: "bioec106a", courseName: "BIOE C106A" },
     { courseid: "bioec106b", courseName: "BIOE C106B" },
@@ -593,7 +599,7 @@ export const CourseMap = () => {
       let otherConcentrations = listOfConcentrations.filter(
         (concentration) => concentration !== courseId
       );
-      // add related courses
+      // add related lower div courses
       for (let i = 0; i < listOfRelatedRequirements.length; i++) {
         if (listOfRelatedRequirements[i].includes(courseId)) {
           // add related requirements to HighlightedList
@@ -603,6 +609,25 @@ export const CourseMap = () => {
           HighlightedList = HighlightedList.concat(related_courses);
         }
       }
+
+      // Loop through the upperDivRelationships map
+      for (const [courseId, courseInfo] of Object.entries(
+        upperDivRelationships
+      )) {
+        // Check if any concentration in listOfConcentrations is in the course's prereqsAndConcentrations
+        let matchingConcentrations = listOfConcentrations.filter(
+          (concentration) =>
+            courseInfo.prereqsAndConcentrations.includes(concentration)
+        );
+
+        // If there are matching concentrations, add the course to HighlightedList
+        if (matchingConcentrations.length > 0) {
+          HighlightedList.push(courseId);
+        }
+      }
+
+      // Ensure HighlightedList has unique courses
+      HighlightedList = [...new Set(HighlightedList)];
     } else if (listOfUpDiv.includes(courseId)) {
       // Please fill in the rest
       HighlightedList =
@@ -735,7 +760,7 @@ export const CourseMap = () => {
         </div>
         <div className="upper-div-container">
           {ListOfUpperDivInfo.map((courseInfo) => (
-            <GeneralRequirements
+            <Upperdivs
               key={courseInfo.courseid}
               className={
                 isHoveredOver
@@ -746,6 +771,7 @@ export const CourseMap = () => {
               }
               courseName={courseInfo.courseName}
               id={courseInfo.courseid}
+              href={`https://bioehs.studentorg.berkeley.edu/courseguides/${courseInfo.courseid}`}
               onMouseOver={() => onMouseOver(courseInfo.courseid)}
               onMouseOut={() => onMouseOut(courseInfo.courseid)}
             />
@@ -756,9 +782,9 @@ export const CourseMap = () => {
         <div>
           <p>
             Hi! This was curated by Anthea and Buvi from Bioengineering Honor
-            Society and we hope it will be helpful. Feel free to slack or email
-            us at bioehs.webmaster@gmail.com with any comments or suggestions.{" "}
-            <h3>How to use this course map:</h3>
+            Society and we hope it will be helpful. Feel free to fill in this
+            form: https://forms.gle/endBsmRMRvLCtTHi7 with any comments or
+            suggestions. <h3>How to use this course map:</h3>
             <p>
               All upper division courses highlight their respective
               prerequisites. Note that BioE11 has the alternative prerequisite
