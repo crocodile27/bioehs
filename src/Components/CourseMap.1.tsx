@@ -429,7 +429,7 @@ export const CourseMap = () => {
       hiearchy_number: 1,
     }, // bioe11 or bio1a
     bioe140l: {
-      prereqsAndConcentrations: ["bioe11", "bio1a"],
+      prereqsAndConcentrations: ["bioe11", "bio1a", "synthetic"],
       color: "blue",
       hiearchy_number: 1,
     },
