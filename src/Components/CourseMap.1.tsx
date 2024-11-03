@@ -781,10 +781,12 @@ export const CourseMap = () => {
       <div className="courseMapSummary">
         <div>
           <p>
-            Hi! This was curated by Anthea and Buvi from Bioengineering Honor
-            Society and we hope it will be helpful. Feel free to fill in this
-            form: https://forms.gle/endBsmRMRvLCtTHi7 with any comments or
-            suggestions. <h3>How to use this course map:</h3>
+            Hi! This project was curated by Anthea from Bioengineering Honor
+            Society and assisted by Buvi. Feel free to fill in this form:
+            https://forms.gle/endBsmRMRvLCtTHi7 with any comments or
+            suggestions. Subscribe to our latest updates to help you choose
+            classes more efficiently: https://forms.gle/4ZhuwB3gr7xHQ73GA
+            <h3>How to use this course map:</h3>
             <p>
               All upper division courses highlight their respective
               prerequisites. Note that BioE11 has the alternative prerequisite
